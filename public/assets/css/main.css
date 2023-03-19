@@ -1,0 +1,100 @@
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    width: 200px;
+    height: 100vh;
+    background-color: #689d6a;
+    color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar a {
+    display: block;
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: #555;
+}
+
+/* Main content styles */
+.content {
+    background-color: #fbf1c7;
+    margin-left: 200px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.content pre {
+    background-color: #f9f5d7;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.content code {
+    font-family: monospace;
+}
+
+.content a {
+    color: #007bff;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+}
