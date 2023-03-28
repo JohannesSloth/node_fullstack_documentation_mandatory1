@@ -2,7 +2,7 @@
 
 In JavaScript, you can work with time by using the built-in `Date` object and the `setTimeout` function. In this document, we'll cover how to work with time in JavaScript, including examples of using both of these tools.
 
-## Using the Date Object
+### Using the Date Object
 
 The `Date` object in JavaScript represents a specific moment in time. You can create a new `Date` object by calling the constructor with no arguments, which will create a `Date` object representing the current time:
 
@@ -43,7 +43,7 @@ newDate.setFullYear(newDate.getFullYear() + 1);
 console.log(newDate); // Output: [current date and time, but one year in the future]
 ```
 
-## Using setTimeout
+### Using setTimeout
 
 The `setTimeout` function in JavaScript allows you to execute a function after a specified amount of time has passed. Here's an example:
 

@@ -3,14 +3,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #fbf1c7;
 }
 
 /* Navbar styles */
 .navbar {
     width: 200px;
     height: 100vh;
-    background-color: #689d6a;
-    color: #fff;
+    background-color: #ebdbb2;
+    color: #282828;
     position: fixed;
     left: 0;
     top: 0;
@@ -24,13 +25,13 @@ body {
 .navbar a {
     display: block;
     padding: 10px;
-    color: #000000;
+    color: #504945;
     text-decoration: none;
     font-size: 16px;
 }
 
 .navbar a:hover {
-    background-color: #555;
+    background-color: #7c6f64;
 }
 
 /* Main content styles */
@@ -44,27 +45,32 @@ body {
 .content h1 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #458588;
 }
 
 .content h2 {
     font-size: 30px;
     margin-bottom: 15px;
+    color: #458588;
 }
 
 .content h3 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #458588;
 }
 
 .content h4 {
     font-size: 20px;
     margin-bottom: 10px;
+    color: #458588;
 }
 
 .content p {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
+    color: #282828;
 }
 
 .content pre {
@@ -77,10 +83,11 @@ body {
 
 .content code {
     font-family: monospace;
+    color: #cc241d;
 }
 
 .content a {
-    color: #007bff;
+    color: #458588;
 }
 
 .content a:hover {

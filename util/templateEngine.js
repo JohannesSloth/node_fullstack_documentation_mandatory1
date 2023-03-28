@@ -1,9 +1,12 @@
 import fs from "fs";
+//import hljs from "highlight.js/lib/common"
 
 function renderPage(page, config={}) {
     const header = fs.readFileSync("./public/components/header/header.html").toString()
                     .replace("$TAB_TITLE", config.tabTitle || "Node Course Documentation");
     const footer = fs.readFileSync("./public/components/footer/footer.html");
+
+    //const highlightedPage = hljs.highlightAuto(page).value
 
     return header + page + footer;
 }
