@@ -1,7 +1,8 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import session from "express-session";
 import fs from "fs";
-import dotenv from "dotenv"
 import { marked } from "marked";
 import templateEngine from "./util/templateEngine.js";
 import authMiddleware from "./util/authMiddleware.js";
@@ -19,9 +20,9 @@ app.use(
   })
 );
 
-dotenv.config();
-
-const frontpage = templateEngine.readPage("./public/pages/frontpage/frontpage.html");
+const frontpage = templateEngine.readPage(
+  "./public/pages/frontpage/frontpage.html"
+);
 //const frontpagePage = templateEngine.renderPage(frontpage);
 
 const login = templateEngine.readPage("./public/pages/login/login.html");
@@ -30,16 +31,15 @@ const login = templateEngine.readPage("./public/pages/login/login.html");
 const admin = templateEngine.readPage("./public/pages/admin/admin.html");
 //const adminPage = templateEngine.renderPage(admin);
 
-
 app.get("/", (req, res) => {
-  res.send(templateEngine.renderPage(frontpage))
-})
+  res.send(templateEngine.renderPage(frontpage));
+});
 
-app.get('/docs/:filename', (req, res) => {
+app.get("/docs/:filename", (req, res) => {
   const filePath = `public/docs/${req.params.filename}.md`;
-  fs.readFile(filePath, 'utf-8', (err, data) => {
+  fs.readFile(filePath, "utf-8", (err, data) => {
     if (err) {
-      return res.status(404).send('File not found');
+      return res.status(404).send("File not found");
     }
     const docHtml = marked(data);
     const renderedPage = templateEngine.renderPage(docHtml);
@@ -61,13 +61,13 @@ app.post("/login", (req, res) => {
 
   if (email === process.env.EMAIL && password === process.env.PASSWORD) {
     req.session.isAuthenticated = true;
-    res.redirect('/admin');
+    res.redirect("/admin");
   } else {
-    res.status(401).send('Incorrect email or password');
+    res.status(401).send("Incorrect email or password");
   }
 });
 
-app.post('/logout', (req, res) => {
+app.post("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       console.error(err);
@@ -77,20 +77,19 @@ app.post('/logout', (req, res) => {
   });
 });
 
-app.post('/admin/create-md', (req, res) => {
+app.post("/admin/create-md", (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
   const filename = `${title}.md`;
   fs.writeFile(`public/docs/${filename}`, content, (error) => {
-      if (error) {
-          console.error(error);
-          res.sendStatus(500);
-      } else {
-          res.sendStatus(200);
-      }
+    if (error) {
+      console.error(error);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
   });
 });
-
 
 const PORT = 8080;
 app.listen(PORT, (error) => {
@@ -98,4 +97,4 @@ app.listen(PORT, (error) => {
     console.log(error);
   }
   console.log("Server running port", PORT);
-})
+});
