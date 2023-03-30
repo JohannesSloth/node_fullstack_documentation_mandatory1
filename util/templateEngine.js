@@ -11,6 +11,11 @@ function renderPage(page, config={}) {
     return header + page + footer;
 }
 
+function readPage(pagePath) {
+    return fs.readFileSync(pagePath).toString();
+}
+
 export default {
-    renderPage
+    renderPage,
+    readPage
 };
