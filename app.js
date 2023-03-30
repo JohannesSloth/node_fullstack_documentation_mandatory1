@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "your-secret-key-here",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -28,17 +28,14 @@ app.use(
 const frontpage = templateEngine.readPage(
   path.join(process.cwd(), "public/pages/frontpage/frontpage.html")
 );
-//const frontpagePage = templateEngine.renderPage(frontpage);
 
 const login = templateEngine.readPage(
   path.join(process.cwd(), "public/pages/login/login.html")
 );
-//const loginPage = templateEngine.renderPage(login);
 
 const admin = templateEngine.readPage(
   path.join(process.cwd(), "public/pages/admin/admin.html")
 );
-//const adminPage = templateEngine.renderPage(admin);
 
 app.get("/", (req, res) => {
   res.send(templateEngine.renderPage(frontpage));
