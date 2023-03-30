@@ -3,13 +3,14 @@
   "builds": [
     {
       "src": "app.js",
-      "use": "@vercel/node",
-      "config": {
-        "outputDirectory": "public"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+        "src": "/assets/(.*)",
+        "dest": "public/assets/$1"
+      },
     {
       "src": "/(.*)",
       "dest": "app.js"
