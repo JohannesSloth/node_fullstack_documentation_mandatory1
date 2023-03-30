@@ -9,7 +9,7 @@ function renderPage(page, config = {}) {
     .replace("$TAB_TITLE", config.tabTitle || "Node Course Documentation")
     .replace(
       "$CSS_LINK",
-      config.cssLink || `<link rel="stylesheet" href="../assets/css/main.css">`
+      config.cssLink || `<link rel="stylesheet" href="/assets/css/main.css">`
     )
     .replace("$NAV_LINKS", navlinkUtil.getNavLinks() || "");
   const footer = fs.readFileSync(path.join(process.cwd(), 'public/components/footer/footer.html'));
