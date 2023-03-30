@@ -3,6 +3,7 @@ dotenv.config();
 import express from "express";
 import session from "express-session";
 import path from "path";
+import { fileURLToPath } from "url";
 import fs from "fs";
 import { marked } from "marked";
 import templateEngine from "./util/templateEngine.js";
@@ -10,7 +11,10 @@ import authMiddleware from "./util/authMiddleware.js";
 
 const app = express();
 
-app.use(express.static(__dirname + "/public"));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
