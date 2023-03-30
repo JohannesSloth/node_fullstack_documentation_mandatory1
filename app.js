@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import session from "express-session";
+import path from 'path';
 import fs from "fs";
 import { marked } from "marked";
 import templateEngine from "./util/templateEngine.js";
@@ -20,15 +21,13 @@ app.use(
   })
 );
 
-const frontpage = templateEngine.readPage(
-  "./public/pages/frontpage/frontpage.html"
-);
+const frontpage = templateEngine.readPage(path.join(process.cwd(), 'public/pages/frontpage/frontpage.html'));
 //const frontpagePage = templateEngine.renderPage(frontpage);
 
-const login = templateEngine.readPage("./public/pages/login/login.html");
+const login = templateEngine.readPage(path.join(process.cwd(), 'public/pages/login/login.html'));
 //const loginPage = templateEngine.renderPage(login);
 
-const admin = templateEngine.readPage("./public/pages/admin/admin.html");
+const admin = templateEngine.readPage(path.join(process.cwd(), 'public/pages/admin/admin.html'));
 //const adminPage = templateEngine.renderPage(admin);
 
 app.get("/", (req, res) => {
@@ -36,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/docs/:filename", (req, res) => {
-  const filePath = `public/docs/${req.params.filename}.md`;
+  const filePath = path.join(process.cwd(), `public/docs/${req.params.filename}.md`);
   fs.readFile(filePath, "utf-8", (err, data) => {
     if (err) {
       return res.status(404).send("File not found");
@@ -81,7 +80,7 @@ app.post("/admin/create-md", (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
   const filename = `${title}.md`;
-  fs.writeFile(`public/docs/${filename}`, content, (error) => {
+  fs.writeFile(path.join(process.cwd(), `public/docs/${filename}`), content, (error) => {
     if (error) {
       console.error(error);
       res.sendStatus(500);
